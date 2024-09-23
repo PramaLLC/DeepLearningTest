@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Learning Test</title>
+    <title>Deep Learning Testing</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,9 +36,9 @@
         }
     </style>
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
 
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
 
 </head>
 <body>
@@ -63,99 +63,6 @@
             "answerF2": "Minibatch Stochastic Gradient Descent",
             "explanation": "Traditional gradient descent computes the gradient using all datapoints, leading to more accurate updates per iteration compared to SGD or minibatch SGD. This results in faster convergence per iteration, but at the cost of higher computational requirements and memory usage per iteration."
            },
-           {
-            "question": "Which method offers the best trade-off between computation/accuracy and is the industry standard for training deep neural networks?",
-            "answerF": "Stochastic Gradient Descent (SGD)",
-            "answerF2": "Gradient Descent",
-            "answerT": "Minibatch Stochastic Gradient Descent",
-            "explanation": "Minibatch Stochastic Gradient Descent allows for models to be trained on larger datasets compared to Gradient Descent due to memory constraints. It provides a balance between the computational efficiency of SGD and the stability of full Gradient Descent. SGD can be more noisy due to the fact that each example is randomly selected, while full Gradient Descent can be computationally prohibitive for large datasets."
-           },
-    
-        
-    
- 
-        
-        {
-        "question": "The Kullback–Leibler (KL) divergence function can be described as ?",
-    
-        "answerF": "The similarity between two neural networks",
-        "answerF2": "The entropy of a single probability distribution",
-        "answerF3": "The distance between two points in Euclidean space",
-        "answerT": "How different two probability distributions are",
-        "answerF4": "The mutual information between two random variables",
-        "explanation": "The Kullback-Leibler (KL) divergence, also known as relative entropy, measures the difference between two probability distributions. It quantifies how much information is lost when one distribution is used to approximate another. While it's often referred to as a 'distance' between distributions, it's not a true metric as it's not symmetric and doesn't satisfy the triangle inequality. KL divergence is widely used in various fields including information theory, machine learning, and statistics."
-        },
-    
-        {
-            "question": "The function F represent which of the following, where P and Q are probability distributions?",
-            "equation": "F(P \\parallel Q) = \\sum_{x \\in \\mathcal{X}} P(x) \\log \\left(\\frac{P(x)}{Q(x)}\\right)",
-            "answerF": "The Jensen-Shannon divergence between P and Q",
-            "answerF2": "The cross-entropy between P and Q",
-            "answerT": "The Kullback-Leibler (KL) divergence between P and Q",
-            "answerF3": "The mutual information between P and Q",
-            "answerF4": "The Hellinger distance",
-            "explanation": "This equation represents the Kullback-Leibler (KL) divergence between probability distributions P and Q. It measures the relative entropy from Q to P, quantifying how much information is lost when using Q to approximate P. While related to concepts like cross-entropy and mutual information, KL divergence is distinct. It's not symmetric (KL(P||Q) ≠ KL(Q||P)), unlike some other measures like Jensen-Shannon divergence or Hellinger distance."
-            },  
-    
-        {
-            "question": "What is the reason for the widespread adoption of cross-entropy vs mean squared error for classification tasks?",
-            "answerF": "Mean squared error is better for image classification because of the log in cross-entropy diminishes the value",
-            "answerF2": "Cross-entropy is computationally less expensive than mean squared error",
-            "answerF3": "Cross-entropy works better with imbalanced datasets",
-            "answerF4": "Cross-entropy naturally handles multi-class problems while mean squared error doesn't",
-            "answerT": "The curved nature of the logarithm in the cross-entropy leads to a better differentiable function compared to the mean squared error",
-            "explanation": "Cross-entropy is widely preferred for classification tasks due to its logarithmic nature. This results in larger gradients for probabilities far from the true label, allowing for faster learning when the model is incorrect. In contrast, mean squared error can lead to slower learning for incorrect predictions, especially when the predicted probability is close to 0 or 1. The steeper gradients of cross-entropy help combat the vanishing gradient problem, particularly in the early stages of training. While cross-entropy has other advantages, such as its natural extension to multi-class problems, its superior gradient behavior is the primary reason for its widespread adoption in classification tasks."
-            },
-    
-            {
-                "question": "The function F represent which of the following, where P is the true probability distribution and Q is the predicted probability distribution?",
-                "equation": "F(P,Q) = -\\sum_{x \\in \\mathcal{X}} P(x) \\log Q(x)",
-                "answerT": "Cross Entropy Loss Function",
-                "answerF": "Kullback-Leibler (KL) divergence",
-                "answerF2": "Mean Squared Error",
-                "answerF3": "Jensen-Shannon divergence",
-                "answerF4": "Batch Cross-Entropy Loss Function",
-                "explanation": "This equation represents the Cross Entropy Loss Function between the true distribution P and predicted distribution Q. It measures the dissimilarity between two probability distributions. In machine learning, P is often the true label distribution (usually a one-hot vector for classification), and Q is the predicted probability distribution. Unlike KL divergence, cross-entropy doesn't subtract the entropy of P."
-                },
-                {
-                "question": "The function F represent which of the following, where P_i and Q_i are the true and predicted probability distributions?",
-                "equation": "F(P,Q) = -\\frac{1}{N} \\sum_{i=1}^N \\sum_{x \\in \\mathcal{X}} P_i(x) \\log Q_i(x)",
-                "answerT": "Batch Cross-Entropy Loss Function",
-                "answerF": "Single Sample Cross-Entropy Loss",
-                "answerF2": "Kullback-Leibler (KL) divergence",
-                "answerF3": "Mean Squared Error",
-                "answerF4": "Jensen-Shannon divergence",
-                "explanation": "This equation represents the Batch Cross-Entropy Loss Function. It calculates the average cross-entropy loss across a batch of N samples. For each sample i, P_i is the true distribution and Q_i is the predicted distribution. The outer sum averages the loss over all samples in the batch, making it suitable for mini-batch training in neural networks."
-                },
-    {
-        "question": "Let's say we have an RGB input image into a convolutional neural network that has the dimensionality of Batch,Channel(C),Height,Width and we want an output channel of 2C. Which of the following is true about the convolution layer?",
-        "answerF": "The number of filters is equal to C, and each filter will have 2C number of kernels applied to each channel of the input image.",
-        "answerT": "The number of filters is equal to 2C, each filter will have C number of kernels, and each kernel is applied to the corresponding channel in the input image.",
-        "answerF2": "The number of filters is equal to 2C, each filter will have 2C number of kernels, and all kernels are applied to all channels of the input image.",
-        "answerF3": "The number of filters is equal to C, each filter will have C number of kernels, and the output is concatenated to achieve 2C channels.",
-        "answerF4": "The number of filters is equal to 3, each filter will have 2C number of kernels, and each kernel is applied to one of the RGB channels separately.",
-        "explanation": "In a convolutional layer, to increase the number of output channels from C to 2C, we need 2C filters. Each filter corresponds to one output channel. Since the input has C channels, each filter must have C kernels to process all input channels. Each kernel in a filter is applied to its corresponding input channel, and the results are summed to produce one value in the output feature map for that filter."
-        },
-    
-        {
-            "question": "Which of the following is the correct order of operations after training the last batch in an epoch?",
-            "answerF": "1. Zero grad optimizer 2. Compute loss 3. Call backward on the loss 4. Step the optimizer 5. Clip the gradient 6. Update learning rate",
-            "answerF2": "1. Call backward on the loss 2. Compute loss 3. Zero grad optimizer 4. Step the optimizer 5. Clip the gradient 6. Update learning rate",
-            "answerF3": "1. Compute loss 2. Call backward on the loss 3. Zero grad optimizer 4. Step the optimizer 5. Update learning rate 6. Clip the gradient",
-            "answerF4": "1. Zero grad optimizer 2. Step the optimizer 3. Compute loss 4. Call backward on the loss 5. Clip the gradient 6. Update learning rate",
-            "answerT": "1. Compute loss 2. Zero grad optimizer 3. Call backward on the loss 4. Clip the gradient 5. Step the optimizer 6. Update learning rate",
-            "explanation": "The correct order of operations is crucial for proper training. First, we compute the loss to evaluate the model's performance. Then, we zero the gradients to clear any existing gradients. Next, we call backward on the loss to compute gradients. Gradient clipping is performed to prevent exploding gradients. After that, we step the optimizer to update the model's parameters. Finally, we update the learning rate, which is typically done at the end of an epoch. The incorrect answers mix up this order, which would lead to improper training or errors in the backpropagation process."
-            },
-
-        {
-            "question": "Which of the following is true for normalization in training?",
-            "answerF": "L1 and L2 normalization always produce the same results in deep learning models.",
-            "answerF2": "L1 normalization is always preferred over L2 normalization for all types of neural networks.",
-            "answerT": "The difference between L2 and L1 normalization is that the distance calculation is Euclidean and Manhattan distance respectively.",
-            "answerF3": "L1 and L2 normalization have no impact on the training process of neural networks.",
-            "answerF4": "The difference between L2 and L1 normalization is that the distance calculation is Manhattan and Euclidean distance respectively.",
-            "explanation": "The correct answer accurately describes the key difference between L2 and L1 normalization. L2 normalization uses Euclidean distance, which is the square root of the sum of squared differences. L1 normalization uses Manhattan distance, which is the sum of absolute differences. This distinction affects how the norms are calculated and can impact model performance differently depending on the specific problem and data distribution. The other options are either false or reverse the relationship between L1/L2 and their corresponding distance metrics."
-            }    
 
             
     ]
