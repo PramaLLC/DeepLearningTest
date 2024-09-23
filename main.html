@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .answer {
+            margin: 10px 0;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .explanation {
+            margin-top: 10px;
+            font-style: italic;
+            display: none;
+        }
+    </style>
+
+<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+
+<!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+
+</head>
+<body>
+    <h1>Deep Learning Test</h1>
+    <div id="quiz"></div>
+    <button id="submit">Submit Answers</button>
+    <div id="result"></div>
+
+    <script>
+        const quizData = [
+
+        {
+        "section": "Deep Learning", 
+    
+        "questions":
+    
+        [
+        {
+            "question": "Which of the following typically has the fastest convergence and least noisiness of a neural network during training per iteration?",
+            "answerF": "Stochastic Gradient Descent (SGD)",
+            "answerT": "Gradient Descent",
+            "answerF2": "Minibatch Stochastic Gradient Descent",
+            "explanation": "Traditional gradient descent computes the gradient using all datapoints, leading to more accurate updates per iteration compared to SGD or minibatch SGD. This results in faster convergence per iteration, but at the cost of higher computational requirements and memory usage per iteration."
+           },
+
+            
+    ]
+    }
+    
+        ];
+
+        function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    function renderQuiz() {
+    const quizContainer = document.getElementById('quiz');
+    let questions = [...quizData[0].questions];
+    shuffleArray(questions);
+
+    questions.forEach((q, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+
+        // Shuffle answers
+        let answers = Object.entries(q).filter(([key, value]) => key.startsWith('answer'));
+        shuffleArray(answers);
+
+        questionDiv.innerHTML = `
+            <h3>Question ${index + 1}:</h3>
+            <p>${q.question}</p>
+            ${q.equation ? `<p>Equation: $$${q.equation}$$</p>` : ''}
+            <div class="answers">
+                ${answers.map(([key, value]) => `
+                    <div class="answer">
+                        <input type="radio" name="q${index}" value="${key}" id="q${index}${key}">
+                        <label for="q${index}${key}">${value}</label>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="explanation">${q.explanation}</div>
+        `;
+        quizContainer.appendChild(questionDiv);
+    });
+
+    // Now that the content is added, typeset the math
+   document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded"); // Debug log
+    // Wait for MathJax to be ready
+    MathJax.startup.promise.then(() => {
+        renderQuiz();
+        const submitButton = document.getElementById('submit');
+        submitButton.addEventListener('click', () => {
+            console.log("Submit button clicked"); // Debug log
+            gradeQuiz();
+        });
+    });
+});
+  
+}
+
+
+    function gradeQuiz() {
+        console.log("Grading quiz..."); // Debug log
+        let score = 0;
+        const questions = document.querySelectorAll('.question');
+        questions.forEach((q, index) => {
+            const selectedAnswer = q.querySelector('input:checked');
+            if (selectedAnswer) {
+                console.log(`Question ${index + 1}: Selected answer - ${selectedAnswer.value}`); // Debug log
+                const answerLabel = selectedAnswer.nextElementSibling;
+                if (selectedAnswer.value === 'answerT') {
+                    score++;
+                    answerLabel.style.color = 'green';
+                    console.log(`Question ${index + 1}: Correct`); // Debug log
+                } else {
+                    answerLabel.style.color = 'red';
+                    // Find and highlight the correct answer in green
+                    const correctAnswer = q.querySelector('input[value="answerT"]');
+                    if (correctAnswer) {
+                        correctAnswer.nextElementSibling.style.color = 'green';
+                    }
+                    console.log(`Question ${index + 1}: Incorrect`); // Debug log
+                }
+            } else {
+                console.log(`Question ${index + 1}: No answer selected`); // Debug log
+            }
+            q.querySelector('.explanation').style.display = 'block';
+        });
+        
+        const resultDiv = document.getElementById('result');
+        resultDiv.textContent = `Score: ${score}/${questions.length}`;
+        console.log(`Final score: ${score}/${questions.length}`); // Debug log
+        
+        // Disable all radio buttons after submission
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.disabled = true;
+        });
+        
+        // Disable the submit button
+        document.getElementById('submit').disabled = true;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("DOM fully loaded"); // Debug log
+        renderQuiz();
+        const submitButton = document.getElementById('submit');
+        submitButton.addEventListener('click', () => {
+            console.log("Submit button clicked"); // Debug log
+            gradeQuiz();
+        });
+    });
+
+
+</script>
