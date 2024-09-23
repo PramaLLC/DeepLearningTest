@@ -57,7 +57,7 @@
     
         [
 
-        
+
         {
             "question": "Which of the following typically has the fastest convergence and least noisiness of a neural network during training per iteration?",
             "answerF": "Stochastic Gradient Descent (SGD)",
@@ -175,6 +175,8 @@
         }
     }
 
+
+
     function renderQuiz() {
     const quizContainer = document.getElementById('quiz');
     let questions = [...quizData[0].questions];
@@ -206,20 +208,9 @@
     });
 
     // Now that the content is added, typeset the math
-   document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM fully loaded"); // Debug log
-    // Wait for MathJax to be ready
-    MathJax.startup.promise.then(() => {
-        renderQuiz();
-        const submitButton = document.getElementById('submit');
-        submitButton.addEventListener('click', () => {
-            console.log("Submit button clicked"); // Debug log
-            gradeQuiz();
-        });
-    });
-});
-  
+    MathJax.typesetPromise();
 }
+
 
 
     function gradeQuiz() {
@@ -263,8 +254,10 @@
         document.getElementById('submit').disabled = true;
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        console.log("DOM fully loaded"); // Debug log
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded"); // Debug log
+    // Wait for MathJax to be ready
+    MathJax.startup.promise.then(() => {
         renderQuiz();
         const submitButton = document.getElementById('submit');
         submitButton.addEventListener('click', () => {
@@ -272,6 +265,8 @@
             gradeQuiz();
         });
     });
+});
+
 
 
 </script>
