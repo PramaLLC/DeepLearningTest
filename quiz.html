@@ -38,7 +38,7 @@
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 
-<!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </head>
 <body>
@@ -56,8 +56,6 @@
         "questions":
     
         [
-
-
         {
             "question": "Which of the following typically has the fastest convergence and least noisiness of a neural network during training per iteration?",
             "answerF": "Stochastic Gradient Descent (SGD)",
@@ -157,12 +155,9 @@
             "answerF3": "L1 and L2 normalization have no impact on the training process of neural networks.",
             "answerF4": "The difference between L2 and L1 normalization is that the distance calculation is Manhattan and Euclidean distance respectively.",
             "explanation": "The correct answer accurately describes the key difference between L2 and L1 normalization. L2 normalization uses Euclidean distance, which is the square root of the sum of squared differences. L1 normalization uses Manhattan distance, which is the sum of absolute differences. This distinction affects how the norms are calculated and can impact model performance differently depending on the specific problem and data distribution. The other options are either false or reverse the relationship between L1/L2 and their corresponding distance metrics."
-            },
+            }    
 
-
-
-
-
+            
     ]
     }
     
@@ -174,8 +169,6 @@
             [array[i], array[j]] = [array[j], array[i]];
         }
     }
-
-
 
     function renderQuiz() {
     const quizContainer = document.getElementById('quiz');
@@ -208,9 +201,20 @@
     });
 
     // Now that the content is added, typeset the math
-    MathJax.typesetPromise();
+   document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded"); // Debug log
+    // Wait for MathJax to be ready
+    MathJax.startup.promise.then(() => {
+        renderQuiz();
+        const submitButton = document.getElementById('submit');
+        submitButton.addEventListener('click', () => {
+            console.log("Submit button clicked"); // Debug log
+            gradeQuiz();
+        });
+    });
+});
+  
 }
-
 
 
     function gradeQuiz() {
@@ -254,10 +258,8 @@
         document.getElementById('submit').disabled = true;
     }
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM fully loaded"); // Debug log
-    // Wait for MathJax to be ready
-    MathJax.startup.promise.then(() => {
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("DOM fully loaded"); // Debug log
         renderQuiz();
         const submitButton = document.getElementById('submit');
         submitButton.addEventListener('click', () => {
@@ -265,8 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
             gradeQuiz();
         });
     });
-});
-
 
 
 </script>
