@@ -48,7 +48,7 @@
     <div id="result"></div>
 
     <script>
-        const quizData =  [
+        const quizData = [
 
         {
         "section": "Deep Learning", 
@@ -121,7 +121,7 @@
             "answerF2": "Mean Squared Error",
             "answerF3": "Jensen-Shannon divergence",
             "answerF4": "Batch Cross-Entropy Loss Function",
-            "explanation": "This equation represents the Cross Entropy Loss Function between the true distribution P and predicted distribution Q. It measures the dissimilarity between two probability distributions. In machine learning, P is often the true label distribution (usually a one-hot vector for classification), and Q is the predicted probability distribution. Unlike KL divergence, cross-entropy doesn't subtract the entropy of P."
+            "explanation": "Feedback: Correct. This formula represents the cross-entropy loss between the true distribution P and the predicted distribution Q."
             },
             {
             "question": "The function F represents which of the following, where P_i and Q_i are the true and predicted probability distributions?",
@@ -179,13 +179,13 @@
         "answerF2": "Kullback-Leibler (KL) divergence",
         "answerT": "Mean Squared Error",
         "answerF4": "Jensen-Shannon divergence",
-        "explanation": "This equation represents the Batch Cross-Entropy Loss Function. It calculates the average cross-entropy loss across a batch of N samples. For each sample i, P_i is the true distribution and Q_i is the predicted distribution. The outer sum averages the loss over all samples in the batch, making it suitable for mini-batch training in neural networks."
+        "explanation": ": This equation represents the Mean Squared Error (MSE) over a batch of NN samples. It calculates the average squared difference between the true distribution Pi(x)Pi​(x) and the predicted distribution Qi(x)Qi​(x) for each sample i."
       
       },
 
     {
     "question": "Which is true about the Adam optimizer?",
-    "answerT": "The Adam optimzier was the first to properly combine the two ideas.",
+    "answerT": "The Adam optimizer effectively combines momentum and adaptive learning rates.",
     "answerF3": "Adam optimizer is a simplified version of RMSProp that doesn't use momentum.",
     "answerF": "Adam optimizer was developed before RMSProp and served as its foundation.",
     "answerF2": "Adam optimizer only works well with convolutional neural networks.",
@@ -227,6 +227,8 @@
     }
     
         ];
+
+
 
         function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
