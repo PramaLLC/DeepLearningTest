@@ -49,184 +49,153 @@
 
     <script>
         const quizData = [
-
-        {
-        "section": "Deep Learning", 
-    
-        "questions":
-    
-        [
-        {
-        "question": "Which of the following typically has the fastest convergence and least noisiness of a neural network during training per iteration?",
-        "answerF": "Stochastic Gradient Descent (SGD)",
-        "answerT": "Gradient Descent",
-        "answerF2": "Minibatch Stochastic Gradient Descent",
-        "answerF3": "Adam",
-        "answerF4": "AdamW",
-
-        "explanation": "Traditional gradient descent computes the gradient using all datapoints, leading to more accurate updates per iteration compared to SGD or minibatch SGD. This results in faster convergence per iteration, but at the cost of higher computational requirements and memory usage per iteration."
-       },
-       {
-        "question": "Which method offers the best trade-off between computation/accuracy and is the industry standard for training deep neural networks?",
-        "answerF": "Stochastic Gradient Descent (SGD)",
-        "answerF2": "Gradient Descent",
-        "answerT": "Minibatch Stochastic Gradient Descent",
-        "answerF3": "Adam",
-        "answerF4": "AdamW",
-
-        "explanation": "Minibatch Stochastic Gradient Descent allows for models to be trained on larger datasets compared to Gradient Descent due to memory constraints. It provides a balance between the computational efficiency of SGD and the stability of full Gradient Descent. SGD can be more noisy due to the fact that each example is randomly selected, while full Gradient Descent can be computationally prohibitive for large datasets."
-       },
-
-
-
-
- 
+        
     {
-    "question": "The Kullback–Leibler (KL) divergence function can be described as ?",
-
-    "answerF": "The similarity between two neural networks",
-    "answerF2": "The entropy of a single probability distribution",
-    "answerF3": "The distance between two points in Euclidean space",
-    "answerT": "How different two probability distributions are",
-    "answerF4": "The mutual information between two random variables",
-    "explanation": "The Kullback-Leibler (KL) divergence, also known as relative entropy, measures the difference between two probability distributions. It quantifies how much information is lost when one distribution is used to approximate another. While it's often referred to as a 'distance' between distributions, it's not a true metric as it's not symmetric and doesn't satisfy the triangle inequality. KL divergence is widely used in various fields including information theory, machine learning, and statistics."
-    },
-
-    {
-        "question": "The function F represents which of the following, where P_i and Q_i are the true and predicted probability distributions?",
-        "equation": "F(P,Q) = -\\frac{1}{N} \\sum_{i=1}^N \\sum_{x \\in \\mathcal{X}} P_i(x) \\log Q_i(x)",
-        "answerF": "The Jensen-Shannon divergence between P and Q",
-        "answerF2": "The cross-entropy between P and Q",
-        "answerT": "The Kullback-Leibler (KL) divergence between P and Q",
-        "answerF3": "The mutual information between P and Q",
-        "answerF4": "The Hellinger distance",
-        "explanation": "This equation represents the Kullback-Leibler (KL) divergence between probability distributions P and Q. It measures the relative entropy from Q to P, quantifying how much information is lost when using Q to approximate P. While related to concepts like cross-entropy and mutual information, KL divergence is distinct. It's not symmetric (KL(P||Q) ≠ KL(Q||P)), unlike some other measures like Jensen-Shannon divergence or Hellinger distance."
-        },  
-
-    {
-        "question": "What is the reason for the widespread adoption of cross-entropy vs mean squared error for classification tasks?",
-        "answerF": "Mean squared error is better for image classification because of the log in cross-entropy diminishes the value",
-        "answerF2": "Cross-entropy is computationally less expensive than mean squared error",
-        "answerF3": "Cross-entropy works better with imbalanced datasets",
-        "answerF4": "Cross-entropy naturally handles multi-class problems while mean squared error doesn't",
-        "answerT": "The curved nature of the logarithm in the cross-entropy leads to a better differentiable function compared to the mean squared error",
-        "explanation": "Cross-entropy is widely preferred for classification tasks due to its logarithmic nature. This results in larger gradients for probabilities far from the true label, allowing for faster learning when the model is incorrect. In contrast, mean squared error can lead to slower learning for incorrect predictions, especially when the predicted probability is close to 0 or 1. The steeper gradients of cross-entropy help combat the vanishing gradient problem, particularly in the early stages of training. While cross-entropy has other advantages, such as its natural extension to multi-class problems, its superior gradient behavior is the primary reason for its widespread adoption in classification tasks."
-        },
-
-        {
-            "question": "The function F represents which of the following, where P is the true probability distribution and Q is the predicted probability distribution?",
-            "equation": "F(P,Q) = -\\sum_{x \\in \\mathcal{X}} P(x) \\log Q(x)",
-            "answerT": "Cross Entropy Loss Function",
-            "answerF": "Kullback-Leibler (KL) divergence",
-            "answerF2": "Mean Squared Error",
-            "answerF3": "Jensen-Shannon divergence",
-            "answerF4": "Batch Cross-Entropy Loss Function",
-            "explanation": "Feedback: Correct. This formula represents the cross-entropy loss between the true distribution P and the predicted distribution Q."
+        "section": "Deep Learning",
+        "questions": [
+            {
+                "question": "Which of the following typically has the fastest convergence and least noisiness of a neural network during training per iteration?",
+                "answerF": "Stochastic Gradient Descent (SGD)",
+                "answerT": "Gradient Descent",
+                "answerF2": "Mini-batch Stochastic Gradient Descent",
+                "answerF3": "Adam",
+                "answerF4": "AdamW",
+                "explanation": "Traditional gradient descent computes the gradient using all data points, leading to more accurate updates per iteration compared to SGD or mini-batch SGD. This results in faster convergence per iteration but at the cost of higher computational requirements and memory usage per iteration."
             },
             {
-            "question": "The function F represents which of the following, where P_i and Q_i are the true and predicted probability distributions?",
-            "equation": "F(P,Q) = -\\frac{1}{N} \\sum_{i=1}^N \\sum_{x \\in \\mathcal{X}} P_i(x) \\log Q_i(x)",
-            "answerT": "Batch Cross-Entropy Loss Function",
-            "answerF": "Single Sample Cross-Entropy Loss",
-            "answerF2": "Kullback-Leibler (KL) divergence",
-            "answerF3": "Mean Squared Error",
-            "answerF4": "Jensen-Shannon divergence",
-            "explanation": "This equation represents the Batch Cross-Entropy Loss Function. It calculates the average cross-entropy loss across a batch of N samples. For each sample i, P_i is the true distribution and Q_i is the predicted distribution. The outer sum averages the loss over all samples in the batch, making it suitable for mini-batch training in neural networks."
-          
-        
-        },
-
+                "question": "Which method offers the best trade-off between computation and accuracy and is the industry standard for training deep neural networks?",
+                "answerF": "Stochastic Gradient Descent (SGD)",
+                "answerF2": "Gradient Descent",
+                "answerT": "Mini-batch Stochastic Gradient Descent",
+                "answerF3": "Adam",
+                "answerF4": "AdamW",
+                "explanation": "Mini-batch Stochastic Gradient Descent allows models to be trained on larger datasets compared to Gradient Descent due to memory constraints. It provides a balance between the computational efficiency of SGD and the stability of full Gradient Descent. SGD can be more noisy because each example is randomly selected, while full Gradient Descent can be computationally prohibitive for large datasets."
+            },
             {
-                "question": "Let's say we have an RGB input image into a convolutional neural network that has the dimensionality of Batch,Channel(C),Height,Width and we want an output channel of 2C. Which of the following is true about the convolution layer?",
-                "answerF": "The number of filters is equal to C, and each filter will have 2C number of kernels applied to each channel of the input image.",
-                "answerT": "The number of filters is equal to 2C, each filter will have C number of kernels, and each kernel is applied to the corresponding channel in the input image.",
-                "answerF2": "The number of filters is equal to 2C, each filter will have 2C number of kernels, and all kernels are applied to all channels of the input image.",
-                "answerF3": "The number of filters is equal to C, each filter will have C number of kernels, and the output is concatenated to achieve 2C channels.",
-                "answerF4": "The number of filters is equal to 3, each filter will have 2C number of kernels, and each kernel is applied to one of the RGB channels separately.",
-                "explanation": "In a convolutional layer, to increase the number of output channels from C to 2C, we need 2C filters. Each filter corresponds to one output channel. Since the input has C channels, each filter must have C kernels to process all input channels. Each kernel in a filter is applied to its corresponding input channel, and the results are summed to produce one value in the output feature map for that filter."
-                },
-            
-                {
-                    "question": "Which of the following is the correct order of operations after training the last batch in an epoch?",
-                    "answerF": "1. Zero grad optimizer 2. Compute loss 3. Call backward on the loss 4. Step the optimizer 5. Clip the gradient 6. Update learning rate",
-                    "answerF2": "1. Call backward on the loss 2. Compute loss 3. Zero grad optimizer 4. Step the optimizer 5. Clip the gradient 6. Update learning rate",
-                    "answerF3": "1. Compute loss 2. Call backward on the loss 3. Zero grad optimizer 4. Step the optimizer 5. Update learning rate 6. Clip the gradient",
-                    "answerF4": "1. Zero grad optimizer 2. Step the optimizer 3. Compute loss 4. Call backward on the loss 5. Clip the gradient 6. Update learning rate",
-                    "answerT": "1. Compute loss 2. Zero grad optimizer 3. Call backward on the loss 4. Clip the gradient 5. Step the optimizer 6. Update learning rate",
-                    "explanation": "The correct order of operations is crucial for proper training. First, we compute the loss to evaluate the model's performance. Then, we zero the gradients to clear any existing gradients. Next, we call backward on the loss to compute gradients. Gradient clipping is performed to prevent exploding gradients. After that, we step the optimizer to update the model's parameters. Finally, we update the learning rate, which is typically done at the end of an epoch. The incorrect answers mix up this order, which would lead to improper training or errors in the backpropagation process."
-                
-                },
-
-
-    {
-        "question": "The equation describes which of the following?",
-        "equation": "\\begin{align*}\nv_t &= \\beta v_{t-1} + \\nabla J(\\theta_{t-1}) \\\\\n\\theta_t &= \\theta_{t-1} - \\alpha v_t\n\\end{align*}",
-        "answerF3": "Stochastic Gradient Descent",
-        "answerF": "Vanilla Gradient Descent",
-        "answerF2": "Adagrad",
-        "answerT": "Gradient Descent with momentum",
-        "answerF4": "RMSprop",
-        "explanation": "This equation represents Gradient Descent with Momentum. The first equation updates the velocity (momentum) term based on the previous velocity and the gradient of the loss function. The second equation updates the parameters by subtracting a fraction of the velocity. Momentum helps accelerate convergence and reduces oscillations by accumulating past gradients."
-    },
-    
-
-
-    {
-        "question": "The function F represents which of the following, where P_i and Q_i are the true and predicted probability distributions?",
-        "equation": "F(P,Q) = \\frac{1}{N} \\sum_{i=1}^N \\sum_{x \\in \\mathcal{X}} (P_i(x) - Q_i(x))^2",
-        "answerF3": "Batch Cross-Entropy Loss Function",
-        "answerF": "Single Sample Cross-Entropy Loss",
-        "answerF2": "Kullback-Leibler (KL) divergence",
-        "answerT": "Mean Squared Error",
-        "answerF4": "Jensen-Shannon divergence",
-        "explanation": ": This equation represents the Mean Squared Error (MSE) over a batch of NN samples. It calculates the average squared difference between the true distribution Pi(x)Pi​(x) and the predicted distribution Qi(x)Qi​(x) for each sample i."
-      
-      },
-
-    {
-    "question": "Which is true about the Adam optimizer?",
-    "answerT": "The Adam optimizer effectively combines momentum and adaptive learning rates.",
-    "answerF3": "Adam optimizer is a simplified version of RMSProp that doesn't use momentum.",
-    "answerF": "Adam optimizer was developed before RMSProp and served as its foundation.",
-    "answerF2": "Adam optimizer only works well with convolutional neural networks.",
-    "answerF4": "Adam optimizer always converges faster than all other optimization algorithms.",
-    "explanation": "Adam (Adaptive Moment Estimation) combines ideas from both RMSProp and momentum. It wasn't developed before them, nor is it a simplified version. It's not limited to CNNs and while often effective, it doesn't always outperform other optimizers in all scenarios."
-    },
-    {
-    "question": "Which of the following describes RMSProp?",
-    "answerT": "Root Mean Square Propagation, an algorithm that maintains a moving average of squared gradients and divides current gradients by the root of this average",
-    "answerF3": "Root Mean Square Perception, an algorithm designed specifically for training perceptron networks by adjusting learning rates",
-    "answerF": "Recursive Momentum Stabilization, a method to prevent exploding gradients in recurrent neural networks by recursively applying momentum",
-    "answerF2": "Rectified Maximum Slope, a technique to adaptively adjust the slope of activation functions based on gradient information",
-    "answerF4": "Regularized Minimum Search, an algorithm to efficiently find the global minimum of the loss function using regularization techniques",
-    "explanation": "RMSProp stands for Root Mean Square Propagation. It's an optimization algorithm that adapts the learning rate for each parameter by maintaining a moving average of squared gradients. The other options are fictitious and do not describe RMSProp's actual function or meaning."
-    },
-
-{
-    "question": "Which of the following correctly describes transfer learning?",
-    "answerT": "When a model is trained on a task and gains information so that it then can be trained on new task.",
-    "answerF": "A technique where a model learns to transfer data between different storage devices.",
-    "answerF2": "The process of training multiple models simultaneously on the same dataset.",
-    "answerF3": "A method to compress the size of a neural network without losing accuracy.",
-    "answerF4": "The ability of a model to generate new, unseen data samples.",
-    "explanation": "Transfer learning is a machine learning technique where a model developed for one task is reused as the starting point for a model on a second, related task. This approach leverages the knowledge gained from solving one problem and applies it to a different but related problem. It's particularly useful when you have limited data for the new task or want to speed up the training process. The correct answer describes this process, while the false answers relate to different concepts in machine learning and data processing that are not transfer learning."
-  },
-
-
-  {
-    "question": "Early stopping in the context of training a deep neural network describes which of the following?",
-    "answerF": "Halting training when the model reaches a predetermined accuracy threshold on the training set",
-    "answerT": "A regularization technique that stops training before the model begins to overfit the training data",
-    "answerF2": "Interrupting training periodically to perform batch normalization on the model's parameters",
-    "answerF3": "Terminating the training process if the loss doesn't decrease after a fixed number of epochs",
-    "answerF4": "Ending training early to save computational resources, regardless of model performance",
-    "explanation": "Early stopping is a regularization technique used to prevent overfitting in iterative learning methods like gradient descent. It involves monitoring the model's performance on a validation set and stopping training when the performance begins to degrade, indicating the point where the model starts to overfit the training data. This helps find an optimal balance between fitting the training data and maintaining good generalization to unseen data."
+                "question": "The Kullback–Leibler (KL) divergence function can be described as?",
+                "answerF": "The similarity between two neural networks",
+                "answerF2": "The entropy of a single probability distribution",
+                "answerF3": "The distance between two points in Euclidean space",
+                "answerT": "How different two probability distributions are",
+                "answerF4": "The mutual information between two random variables",
+                "explanation": "The Kullback-Leibler (KL) divergence, also known as relative entropy, measures the difference between two probability distributions. It quantifies how much information is lost when one distribution is used to approximate another. While it's often referred to as a 'distance' between distributions, it's not a true metric as it's not symmetric and doesn't satisfy the triangle inequality. KL divergence is widely used in various fields including information theory, machine learning, and statistics."
+            },
+            {
+                "question": "The function F represents which of the following, where \( P_i \) and \( Q_i \) are the true and predicted probability distributions?",
+                "equation": "F(P,Q) = -\\frac{1}{N} \\sum_{i=1}^N \\sum_{x \\in \\mathcal{X}} P_i(x) \\log Q_i(x)",
+                "answerF": "The Jensen-Shannon divergence between P and Q",
+                "answerT": "The cross-entropy between P and Q",
+                "answerF2": "The Kullback-Leibler (KL) divergence between P and Q",
+                "answerF3": "The mutual information between P and Q",
+                "answerF4": "The Hellinger distance",
+                "explanation": "This equation represents the cross-entropy loss function between the true distributions \( P_i \) and the predicted distributions \( Q_i \). It measures the dissimilarity between two probability distributions. In machine learning, \( P_i \) is often the true label distribution (usually a one-hot vector for classification), and \( Q_i \) is the predicted probability distribution."
+            },
+            {
+                "question": "What is the reason for the widespread adoption of cross-entropy versus mean squared error for classification tasks?",
+                "answerF": "Mean squared error is better for image classification because the log in cross-entropy diminishes the value",
+                "answerF2": "Cross-entropy is computationally less expensive than mean squared error",
+                "answerF3": "Cross-entropy works better with imbalanced datasets",
+                "answerF4": "Cross-entropy naturally handles multi-class problems while mean squared error doesn't",
+                "answerT": "The curved nature of the logarithm in the cross-entropy leads to a better differentiable function compared to the mean squared error",
+                "explanation": "Cross-entropy is widely preferred for classification tasks due to its logarithmic nature. This results in larger gradients for probabilities far from the true label, allowing for faster learning when the model is incorrect. In contrast, mean squared error can lead to slower learning for incorrect predictions, especially when the predicted probability is close to 0 or 1. The steeper gradients of cross-entropy help combat the vanishing gradient problem, particularly in the early stages of training. While cross-entropy has other advantages, such as its natural extension to multi-class problems, its superior gradient behavior is the primary reason for its widespread adoption in classification tasks."
+            },
+            {
+                "question": "The function F represents which of the following, where \( P \) is the true probability distribution and \( Q \) is the predicted probability distribution?",
+                "equation": "F(P,Q) = -\\sum_{x \\in \\mathcal{X}} P(x) \\log Q(x)",
+                "answerT": "Cross-Entropy Loss Function",
+                "answerF": "Kullback-Leibler (KL) divergence",
+                "answerF2": "Mean Squared Error",
+                "answerF3": "Jensen-Shannon divergence",
+                "answerF4": "Batch Cross-Entropy Loss Function",
+                "explanation": "This formula represents the cross-entropy loss function between the true distribution \( P \) and the predicted distribution \( Q \)."
+            },
+            {
+                "question": "The function F represents which of the following, where \( P_i \) and \( Q_i \) are the true and predicted probability distributions?",
+                "equation": "F(P,Q) = -\\frac{1}{N} \\sum_{i=1}^N \\sum_{x \\in \\mathcal{X}} P_i(x) \\log Q_i(x)",
+                "answerT": "Batch Cross-Entropy Loss Function",
+                "answerF": "Single Sample Cross-Entropy Loss",
+                "answerF2": "Kullback-Leibler (KL) divergence",
+                "answerF3": "Mean Squared Error",
+                "answerF4": "Jensen-Shannon divergence",
+                "explanation": "This equation represents the Batch Cross-Entropy Loss Function. It calculates the average cross-entropy loss across a batch of \( N \) samples. For each sample \( i \), \( P_i \) is the true distribution and \( Q_i \) is the predicted distribution. The outer sum averages the loss over all samples in the batch, making it suitable for mini-batch training in neural networks."
+            },
+            {
+                "question": "Let's say we have an RGB input image into a convolutional neural network that has the dimensionality of Batch, Channel (\( C \)), Height, Width, and we want an output channel of \( 2C \). Which of the following is true about the convolution layer?",
+                "answerF": "The number of filters is equal to \( C \), and each filter will have \( 2C \) kernels applied to each channel of the input image.",
+                "answerT": "The number of filters is equal to \( 2C \); each filter will have \( C \) kernels, and each kernel is applied to the corresponding channel in the input image.",
+                "answerF2": "The number of filters is equal to \( 2C \); each filter will have \( 2C \) kernels, and all kernels are applied to all channels of the input image.",
+                "answerF3": "The number of filters is equal to \( C \); each filter will have \( C \) kernels, and the output is concatenated to achieve \( 2C \) channels.",
+                "answerF4": "The number of filters is equal to 3; each filter will have \( 2C \) kernels, and each kernel is applied to one of the RGB channels separately.",
+                "explanation": "In a convolutional layer, to increase the number of output channels from \( C \) to \( 2C \), we need \( 2C \) filters. Each filter corresponds to one output channel. Since the input has \( C \) channels, each filter must have \( C \) kernels to process all input channels. Each kernel in a filter is applied to its corresponding input channel, and the results are summed to produce one value in the output feature map for that filter."
+            },
+            {
+                "question": "Which of the following is the correct order of operations after training the last batch in an epoch?",
+                "answerF": "1. Zero grad optimizer 2. Compute loss 3. Call backward on the loss 4. Step the optimizer 5. Clip the gradient 6. Update learning rate",
+                "answerF2": "1. Call backward on the loss 2. Compute loss 3. Zero grad optimizer 4. Step the optimizer 5. Clip the gradient 6. Update learning rate",
+                "answerF3": "1. Compute loss 2. Call backward on the loss 3. Zero grad optimizer 4. Step the optimizer 5. Update learning rate 6. Clip the gradient",
+                "answerF4": "1. Zero grad optimizer 2. Step the optimizer 3. Compute loss 4. Call backward on the loss 5. Clip the gradient 6. Update learning rate",
+                "answerT": "1. Compute loss 2. Zero grad optimizer 3. Call backward on the loss 4. Clip the gradient 5. Step the optimizer 6. Update learning rate",
+                "explanation": "The correct order of operations is crucial for proper training. First, we compute the loss to evaluate the model's performance. Then, we zero the gradients to clear any existing gradients. Next, we call backward on the loss to compute gradients. Gradient clipping is performed to prevent exploding gradients. After that, we step the optimizer to update the model's parameters. Finally, we update the learning rate, which is typically done at the end of an epoch. The incorrect answers mix up this order, which could lead to improper training or errors in the backpropagation process."
+            },
+            {
+                "question": "The equation describes which of the following?",
+                "equation": "\\begin{align*}\n    v_t &= \\beta v_{t-1} + \\nabla J(\\theta_{t-1}) \\\\\n    \\theta_t &= \\theta_{t-1} - \\alpha v_t\n\\end{align*}",
+                "answerF3": "Stochastic Gradient Descent",
+                "answerF": "Vanilla Gradient Descent",
+                "answerF2": "Adagrad",
+                "answerT": "Gradient Descent with Momentum",
+                "answerF4": "RMSProp",
+                "explanation": "This equation represents Gradient Descent with Momentum. The first equation updates the velocity (momentum) term based on the previous velocity and the gradient of the loss function. The second equation updates the parameters by subtracting a fraction of the velocity. Momentum helps accelerate convergence and reduces oscillations by accumulating past gradients."
+            },
+            {
+                "question": "The function F represents which of the following, where \( P_i \) and \( Q_i \) are the true and predicted probability distributions?",
+                "equation": "F(P,Q) = \\frac{1}{N} \\sum_{i=1}^N \\sum_{x \\in \\mathcal{X}} (P_i(x) - Q_i(x))^2",
+                "answerF3": "Batch Cross-Entropy Loss Function",
+                "answerF": "Single Sample Cross-Entropy Loss",
+                "answerF2": "Kullback-Leibler (KL) divergence",
+                "answerT": "Mean Squared Error",
+                "answerF4": "Jensen-Shannon divergence",
+                "explanation": "This equation represents the Mean Squared Error (MSE) over a batch of \( N \) samples. It calculates the average squared difference between the true distribution \( P_i(x) \) and the predicted distribution \( Q_i(x) \) for each sample \( i \)."
+            },
+            {
+                "question": "Which is true about the Adam optimizer?",
+                "answerT": "The Adam optimizer effectively combines momentum and adaptive learning rates.",
+                "answerF3": "Adam optimizer is a simplified version of RMSProp that doesn't use momentum.",
+                "answerF": "Adam optimizer was developed before RMSProp and served as its foundation.",
+                "answerF2": "Adam optimizer only works well with convolutional neural networks.",
+                "answerF4": "Adam optimizer always converges faster than all other optimization algorithms.",
+                "explanation": "Adam (Adaptive Moment Estimation) combines ideas from both RMSProp and momentum. It wasn't developed before them, nor is it a simplified version. It's not limited to CNNs, and while often effective, it doesn't always outperform other optimizers in all scenarios."
+            },
+            {
+                "question": "Which of the following describes RMSProp?",
+                "answerT": "Root Mean Square Propagation, an algorithm that maintains a moving average of squared gradients and divides current gradients by the root of this average",
+                "answerF3": "Root Mean Square Perception, an algorithm designed specifically for training perceptron networks by adjusting learning rates",
+                "answerF": "Recursive Momentum Stabilization, a method to prevent exploding gradients in recurrent neural networks by recursively applying momentum",
+                "answerF2": "Rectified Maximum Slope, a technique to adaptively adjust the slope of activation functions based on gradient information",
+                "answerF4": "Regularized Minimum Search, an algorithm to efficiently find the global minimum of the loss function using regularization techniques",
+                "explanation": "RMSProp stands for Root Mean Square Propagation. It's an optimization algorithm that adapts the learning rate for each parameter by maintaining a moving average of squared gradients. The other options are fictitious and do not describe RMSProp's actual function or meaning."
+            },
+            {
+                "question": "Which of the following correctly describes transfer learning?",
+                "answerT": "When a model is trained on a task and gains information so that it then can be trained on a new task.",
+                "answerF": "A technique where a model learns to transfer data between different storage devices.",
+                "answerF2": "The process of training multiple models simultaneously on the same dataset.",
+                "answerF3": "A method to compress the size of a neural network without losing accuracy.",
+                "answerF4": "The ability of a model to generate new, unseen data samples.",
+                "explanation": "Transfer learning is a machine learning technique where a model developed for one task is reused as the starting point for a model on a second, related task. This approach leverages the knowledge gained from solving one problem and applies it to a different but related problem. It's particularly useful when you have limited data for the new task or want to speed up the training process. The correct answer describes this process, while the false answers relate to different concepts in machine learning and data processing that are not transfer learning."
+            },
+            {
+                "question": "Early stopping in the context of training a deep neural network describes which of the following?",
+                "answerF": "Halting training when the model reaches a predetermined accuracy threshold on the training set",
+                "answerT": "A regularization technique that stops training before the model begins to overfit the training data",
+                "answerF2": "Interrupting training periodically to perform batch normalization on the model's parameters",
+                "answerF3": "Terminating the training process if the loss doesn't decrease after a fixed number of epochs",
+                "answerF4": "Ending training early to save computational resources, regardless of model performance",
+                "explanation": "Early stopping is a regularization technique used to prevent overfitting in iterative learning methods like gradient descent. It involves monitoring the model's performance on a validation set and stopping training when the performance begins to degrade, indicating the point where the model starts to overfit the training data. This helps find an optimal balance between fitting the training data and maintaining good generalization to unseen data."
+            }
+        ]
     }
-            
-    ]
-    }
-    
-        ];
+]
 
 
 
