@@ -117,15 +117,16 @@
                 "explanation": "The Kullback-Leibler (KL) divergence, also known as relative entropy, measures the difference between two probability distributions. It quantifies how much information is lost when one distribution is used to approximate another. While it's often referred to as a 'distance' between distributions, it's not a true metric as it's not symmetric and doesn't satisfy the triangle inequality. KL divergence is widely used in various fields including information theory, machine learning, and statistics."
             },
             {
-                "question": "The function F represents which of the following, where \( P_i \) and \( Q_i \) are the true and predicted probability distributions?",
-                "equation": "F(P,Q) = -\\frac{1}{N} \\sum_{i=1}^N \\sum_{x \\in \\mathcal{X}} P_i(x) \\log Q_i(x)",
-                "answerF": "The Jensen-Shannon divergence between P and Q",
-                "answerT": "The cross-entropy between P and Q",
-                "answerF2": "The Kullback-Leibler (KL) divergence between P and Q",
-                "answerF3": "The mutual information between P and Q",
-                "answerF4": "The Hellinger distance",
-                "explanation": "This equation represents the cross-entropy loss function between the true distributions \( P_i \) and the predicted distributions \( Q_i \). It measures the dissimilarity between two probability distributions. In machine learning, \( P_i \) is often the true label distribution (usually a one-hot vector for classification), and \( Q_i \) is the predicted probability distribution."
-            },
+    "question": "The function F represents which of the following, where \( P_i \) and \( Q_i \) are the true and predicted probability distributions, and F measures the relative entropy between \( P_i \) and \( Q_i \)?",
+    "equation": "F(P,Q) = \\frac{1}{N} \\sum_{i=1}^N \\sum_{x \\in \\mathcal{X}} P_i(x) \\log \\frac{P_i(x)}{Q_i(x)}",
+    "answerF": "The Jensen-Shannon divergence between P and Q",
+    "answerF2": "The cross-entropy between P and Q",
+    "answerT": "The Kullback-Leibler (KL) divergence between P and Q",
+    "answerF3": "The mutual information between P and Q",
+    "answerF4": "The Hellinger distance",
+    "explanation": "This equation represents the Kullback-Leibler (KL) divergence between the true distributions \( P_i \) and the predicted distributions \( Q_i \). KL divergence measures the relative entropy, or how one probability distribution differs from another. It is asymmetric, meaning that \( KL(P_i || Q_i) \\neq KL(Q_i || P_i) \). The lower the KL divergence, the closer the predicted distribution \( Q_i \) is to the true distribution \( P_i \)."
+},
+
             {
                 "question": "What is the reason for the widespread adoption of cross-entropy versus mean squared error for classification tasks?",
                 "answerF": "Mean squared error is better for image classification because the log in cross-entropy diminishes the value",
