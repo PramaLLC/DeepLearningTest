@@ -128,12 +128,12 @@
 },
 
             {
-                "question": "What is the reason for the widespread adoption of cross-entropy versus mean squared error for classification tasks?",
+                "question": "What is the reason for the widespread adoption of cross-entropy versus mean squared error when possible?",
                 "answerF": "Mean squared error is better for image classification because the log in cross-entropy diminishes the value",
                 "answerF2": "Cross-entropy is computationally less expensive than mean squared error",
                 "answerF3": "Cross-entropy works better with imbalanced datasets",
                 "answerF4": "Cross-entropy naturally handles multi-class problems while mean squared error doesn't",
-                "answerT": "The curved nature of the logarithm in the cross-entropy leads to a better differentiable function compared to the mean squared error",
+                "answerT": "The curved nature of the logarithm in the cross-entropy leads to more information during backprogation",
                 "explanation": "Cross-entropy is widely preferred for classification tasks due to its logarithmic nature. This results in larger gradients for probabilities far from the true label, allowing for faster learning when the model is incorrect. In contrast, mean squared error can lead to slower learning for incorrect predictions, especially when the predicted probability is close to 0 or 1. The steeper gradients of cross-entropy help combat the vanishing gradient problem, particularly in the early stages of training. While cross-entropy has other advantages, such as its natural extension to multi-class problems, its superior gradient behavior is the primary reason for its widespread adoption in classification tasks."
             },
             {
