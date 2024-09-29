@@ -166,7 +166,7 @@
                 "explanation": "In a convolutional layer, to increase the number of output channels from \( C \) to \( 2C \), we need \( 2C \) filters. Each filter corresponds to one output channel. Since the input has \( C \) channels, each filter must have \( C \) kernels to process all input channels. Each kernel in a filter is applied to its corresponding input channel, and the results are summed to produce one value in the output feature map for that filter."
             },
             {
-                "question": "Which of the following is the correct order of operations after training the last batch in an epoch?",
+                "question": "Which of the following is the correct order of operations after training the last batch in an epoch (Pytorch)?",
                 "answerF": "1. Zero grad optimizer 2. Compute loss 3. Call backward on the loss 4. Step the optimizer 5. Clip the gradient 6. Update learning rate",
                 "answerF2": "1. Call backward on the loss 2. Compute loss 3. Zero grad optimizer 4. Step the optimizer 5. Clip the gradient 6. Update learning rate",
                 "answerF3": "1. Compute loss 2. Call backward on the loss 3. Zero grad optimizer 4. Step the optimizer 5. Update learning rate 6. Clip the gradient",
